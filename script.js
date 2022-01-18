@@ -40,7 +40,7 @@ async function getApiLocation(city) {
     `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${weather.apikey}`
   );
   const data = await response.json();
-  console.log(data);
+  // console.log(data);
   return data;
 }
 
@@ -50,8 +50,11 @@ function addSearchedCity(city) {
   <div><i class="fas fa-greater-than"></i></div>
 </div>`;
   searchOpen.insertAdjacentHTML("beforeend", html);
-  // const cityDynamic = document.querySelector(".sticker").innerText;
+  const cityDynamic = document.querySelector(".sticker").innerText;
   // console.log(cityDynamic);
+  document.querySelector(".two").addEventListener("click", function () {
+    displayData(cityDynamic);
+  });
 }
 
 async function displayData(city) {
@@ -96,9 +99,9 @@ async function displayData(city) {
     }</div>
     <img src="${image}" class="icon" alt="" />
     <div class="temp">
-      <div class="min">${(Citydata.list[i].main.temp_min - 273.15).toPrecision(
-        2
-      )}৹C</div>
+      <div class="min"><span class="tem">${(
+        Citydata.list[i].main.temp_min - 273.15
+      ).toPrecision(2)}</span><span class="uni">৹C</span></div>
       <div class="max">${(Citydata.list[i].main.temp_max - 273.15).toPrecision(
         2
       )}৹C</div>
@@ -114,8 +117,8 @@ function renderCurrent() {
 }
 function renderData() {
   const city = searchPlace.value;
-  addSearchedCity(city);
   displayData(city);
+  addSearchedCity(city);
 }
 
 function whichImage(weaImg) {
@@ -130,6 +133,15 @@ function whichImage(weaImg) {
 
   return image;
 }
+const temperature = document.querySelectorAll(".tem");
+const unit = document.querySelectorAll(".uni");
+
+function convertToF() {
+  unit.forEach((uni) => {
+    uni.innerText = "৹F";
+  });
+}
+convertToF();
 // ==================Event Listeners==================
 window.addEventListener("load", renderCurrent);
 search.addEventListener("click", function () {
