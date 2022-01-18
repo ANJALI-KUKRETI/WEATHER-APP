@@ -52,7 +52,7 @@
 .todayImage {
   position: absolute;
   top: 100px;
-  left: 260px;
+  left: 240px;
   height: 200px;
 }
 
@@ -206,7 +206,8 @@
   position: absolute;
   left: -100vw;
   background-color: rgb(31, 31, 54);
-
+  overflow-y: scroll;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -250,6 +251,7 @@
   padding: 10px;
   width: 24vw;
   font-size: 20px;
+  cursor: pointer;
 }
 .fa-greater-than {
   font-size: 10px;
@@ -359,7 +361,8 @@
   }
   .left {
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    padding: 6px;
   }
   .right {
     width: 100%;
