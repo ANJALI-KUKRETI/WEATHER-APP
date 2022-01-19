@@ -345,13 +345,19 @@
 }
 @media screen and (max-width: 900px) {
   .right {
-    padding: 8px 35px;
+    padding: 8px 22px;
   }
   .tempToday {
     font-size: 70px;
   }
   .l4 {
     font-size: 25px;
+  }
+  .todayImage {
+    width: 148px;
+    height: 135px;
+    left: 105px;
+    top: 20px;
   }
 }
 @media screen and (max-width: 700px) {
