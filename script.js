@@ -15,6 +15,8 @@ const aValue = document.querySelector(".aValue");
 const bar = document.querySelector("#bar");
 const catToday = document.querySelector(".catToday");
 const next = document.querySelectorAll(".d");
+const celsius = document.querySelector(".celsius");
+const far = document.querySelector(".far");
 
 const monthArray = [
   "Jan",
@@ -40,7 +42,6 @@ async function getApiLocation(city) {
     `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${weather.apikey}`
   );
   const data = await response.json();
-  // console.log(data);
   return data;
 }
 
@@ -51,7 +52,6 @@ function addSearchedCity(city) {
 </div>`;
   searchOpen.insertAdjacentHTML("beforeend", html);
   const cityDynamic = document.querySelector(".sticker").innerText;
-  // console.log(cityDynamic);
   document.querySelector(".two").addEventListener("click", function () {
     displayData(cityDynamic);
   });
@@ -83,11 +83,14 @@ async function displayData(city) {
   bar.value = Citydata.list[0].main.humidity;
   catToday.textContent = Citydata.list[0].weather[0].main;
 
+  let arr = [];
+  arr.push((Citydata.list[0].main.temp - 273.15).toPrecision(2));
   for (let i = 7, j = 0; i <= 40, j < 5; i += 8, j++) {
     const currentDate = new Date(
       new Date().getTime() + 24 * 60 * 60 * 1000 * (j + 1)
     );
-
+    arr.push((Citydata.list[i].main.temp_min - 273.15).toPrecision(2));
+    arr.push((Citydata.list[i].main.temp_min - 273.15).toPrecision(2));
     const weaImg = Citydata.list[i].weather[0].main;
     const image = whichImage(weaImg);
     const date = currentDate.getDate();
@@ -102,13 +105,22 @@ async function displayData(city) {
       <div class="min"><span class="tem">${(
         Citydata.list[i].main.temp_min - 273.15
       ).toPrecision(2)}</span><span class="uni">৹C</span></div>
-      <div class="max">${(Citydata.list[i].main.temp_max - 273.15).toPrecision(
-        2
-      )}৹C</div>
+      <div class="max"><span class="tem">${(
+        Citydata.list[i].main.temp_min - 273.15
+      ).toPrecision(2)}</span><span class="uni">৹C</span></div>
     </div>
   `;
     next[j].innerHTML = toDisplay;
   }
+
+  const temperature = document.querySelectorAll(".tem");
+  const unit = document.querySelectorAll(".uni");
+  far.addEventListener("click", () => {
+    changeToFar(temperature, unit, arr);
+  });
+  celsius.addEventListener("click", () => {
+    changeToCel(temperature, unit, arr);
+  });
 }
 
 function renderCurrent() {
@@ -133,15 +145,26 @@ function whichImage(weaImg) {
 
   return image;
 }
-const temperature = document.querySelectorAll(".tem");
-const unit = document.querySelectorAll(".uni");
 
-function convertToF() {
+function changeToFar(temperature, unit, arr) {
   unit.forEach((uni) => {
     uni.innerText = "৹F";
   });
+  temperature.forEach((temp, i) => {
+    const inFar = (arr[i] * (9 / 5) + 32).toPrecision(2);
+
+    temp.innerText = inFar;
+  });
 }
-convertToF();
+function changeToCel(temperature, unit, arr) {
+  unit.forEach((uni) => {
+    uni.innerText = "৹C";
+  });
+  temperature.forEach((temp, i) => {
+    temp.innerText = arr[i];
+  });
+}
+
 // ==================Event Listeners==================
 window.addEventListener("load", renderCurrent);
 search.addEventListener("click", function () {

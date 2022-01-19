@@ -222,7 +222,7 @@
   margin: 20px;
   width: 24vw;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 .two {
   display: flex;
@@ -239,7 +239,7 @@
 }
 .searchButton {
   padding: 12px;
-  margin-left: 6px;
+  /* margin-left: 6px; */
   font-size: 15px;
   background-color: rgb(28, 77, 182);
   border: none;
