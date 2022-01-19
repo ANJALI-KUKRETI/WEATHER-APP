@@ -374,7 +374,8 @@
   .row1,
   .row2 {
     flex-wrap: wrap;
-    align-items: center;
+    /* align-items: center; */
+    /* margin: 12px; */
   }
   .row1,
   .row2 {
@@ -395,6 +396,11 @@
   }
   .searchBar {
     width: 100%;
+  }
+}
+@media screen and (max-width: 450px) {
+  .r2 {
+    padding: 25px;
   }
 }
 @media screen and (max-width: 376px) {

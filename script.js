@@ -51,9 +51,11 @@ function addSearchedCity(city) {
   <div><i class="fas fa-greater-than"></i></div>
 </div>`;
   searchOpen.insertAdjacentHTML("beforeend", html);
-  const cityDynamic = document.querySelector(".sticker").innerText;
-  document.querySelector(".two").addEventListener("click", function () {
-    displayData(cityDynamic);
+
+  document.querySelectorAll(".two").forEach((t) => {
+    t.addEventListener("click", function () {
+      displayData(t.children[0].innerText);
+    });
   });
 }
 
