@@ -391,11 +391,12 @@
     width: 100vw;
   }
   .one {
-    width: 60vw;
+    width: 75vw;
     justify-content: space-evenly;
   }
   .two {
-    width: 50vw;
+    width: 75vw;
+    justify-content: space-around;
   }
   #searchPlace {
     width: 150px;
