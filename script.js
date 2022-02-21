@@ -119,9 +119,17 @@ async function displayData(city) {
   const unit = document.querySelectorAll(".uni");
   far.addEventListener("click", () => {
     changeToFar(temperature, unit, arr);
+    if (celsius.classList.contains("active")) {
+      celsius.classList.remove("active");
+      far.classList.add("active");
+    }
   });
   celsius.addEventListener("click", () => {
     changeToCel(temperature, unit, arr);
+    if (far.classList.contains("active")) {
+      far.classList.remove("active");
+      celsius.classList.add("active");
+    }
   });
 }
 

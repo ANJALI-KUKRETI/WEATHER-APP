@@ -11,6 +11,10 @@
   font-family: Raleway;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
 /* ==================Left side============== */
 
 .left {
@@ -101,7 +105,8 @@
   display: flex;
   justify-content: flex-end;
 }
-.far {
+.far,
+.celsius {
   padding: 10px 13px;
   border-radius: 50%;
   background-color: rgb(114, 110, 110);
@@ -109,14 +114,10 @@
   font-weight: bold;
   cursor: pointer;
 }
-.celsius {
-  padding: 10px 13px;
-  border-radius: 50%;
+
+.active {
   background-color: white;
   color: black;
-  margin: 5px;
-  font-weight: bold;
-  cursor: pointer;
 }
 .r2 {
   display: flex;
